@@ -1,9 +1,12 @@
 import 'package:DevQuiz/core/core.dart';
 import 'package:DevQuiz/home/widgets/score_card/score_card_widget.dart';
+import 'package:DevQuiz/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  AppBarWidget() : super(child: _appBar(), preferredSize: Size.fromHeight(250));
+  final UserModel user;
+  AppBarWidget({required this.user})
+      : super(child: _appBar(), preferredSize: Size.fromHeight(250));
   static Widget _appBar() {
     return Container(
       height: 250,
