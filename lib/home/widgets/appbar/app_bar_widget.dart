@@ -4,10 +4,10 @@ import 'package:DevQuiz/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  final UserModel user;
+  UserModel user;
   AppBarWidget({required this.user})
-      : super(child: _appBar(), preferredSize: Size.fromHeight(250));
-  static Widget _appBar() {
+      : super(child: _appBar(user), preferredSize: Size.fromHeight(250));
+  static Widget _appBar(UserModel user) {
     return Container(
       height: 250,
       child: Stack(
@@ -48,7 +48,7 @@ class AppBarWidget extends PreferredSize {
           ),
           Align(
             alignment: Alignment(0, 1),
-            child: ScoreCardWidget(),
+            child: ScoreCardWidget(percent: user.score / 100.0),
           ),
         ],
       ),

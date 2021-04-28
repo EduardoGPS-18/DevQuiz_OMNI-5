@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 class QuizWidget extends StatefulWidget {
   final QuestionModel question;
-  final VoidCallback onChange;
+  final ValueChanged<bool> onSelected;
 
-  const QuizWidget({Key? key, required this.question, required this.onChange})
+  const QuizWidget({Key? key, required this.question, required this.onSelected})
       : super(key: key);
 
   @override
@@ -35,10 +35,10 @@ class _QuizWidgetState extends State<QuizWidget> {
             AwnserWidget(
               anwser: awnser(i),
               disabled: indexSelected != -1,
-              onTap: () => setState(() {
+              onTap: (value) => setState(() {
                 indexSelected = i;
                 Future.delayed(Duration(milliseconds: 300))
-                    .then((value) => widget.onChange());
+                    .then((_) => widget.onSelected(value));
               }),
               isSelected: indexSelected == i,
             ),
